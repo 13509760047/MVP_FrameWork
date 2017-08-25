@@ -15,6 +15,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Helper.init(new OkhttpRequest());
+        Helper.addHttp(new OkhttpRequest());
     }
 }

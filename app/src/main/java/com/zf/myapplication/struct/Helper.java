@@ -27,7 +27,7 @@ public class Helper implements IHttpBase {
         return instance;
     }
 
-    public static void init(IHttpBase ihttpBase){
+    public static void addHttp(IHttpBase ihttpBase){
         mIhttpBase = ihttpBase;
     }
 
