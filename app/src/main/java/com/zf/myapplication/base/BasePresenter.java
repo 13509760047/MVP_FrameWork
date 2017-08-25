@@ -3,7 +3,8 @@ package com.zf.myapplication.base;
 import android.support.annotation.NonNull;
 
 /**
- * Created by Administrator on 2017/8/19 0019.
+ *  2033152950
+ * Created by zf on 2017/8/12 0025.
  */
 
 public abstract class BasePresenter<T> {

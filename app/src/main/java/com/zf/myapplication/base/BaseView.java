@@ -1,7 +1,8 @@
 package com.zf.myapplication.base;
 
 /**
- * Created by Administrator on 2017/8/19 0019.
+ *  2033152950
+ * Created by zf on 2017/8/12 0025.
  */
 
 public interface BaseView {

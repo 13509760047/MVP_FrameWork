@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.zf.myapplication.R;
 
-
+/**
+ *  2033152950
+ * Created by zf on 2017/8/12 0025.
+ */
 public abstract class BaseActivity<V,T extends BasePresenter<V>> extends AppCompatActivity {
 
     protected T presenter;

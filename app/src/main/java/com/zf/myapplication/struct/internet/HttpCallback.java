@@ -7,7 +7,8 @@ import java.lang.reflect.Type;
 
 
 /**
- * Created by Administrator on 2017/8/25 0025.
+ *  2033152950
+ * Created by zf on 2017/8/25 0025.
  */
 
 public abstract class HttpCallback<Response> implements ICallback {
