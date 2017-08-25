@@ -1,10 +1,10 @@
 package com.zf.myapplication.struct.internet;
 
 /**
- * 2033152950
- * Created by zf on 2017/8/25 0025.
+ * creater：zf
+ * qq：2033152950
+ * time：2017/8/25 0025 下午 5:48
  */
-
 public interface ICallback {
     /**
      * 成功
