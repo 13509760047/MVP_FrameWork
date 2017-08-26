@@ -16,9 +16,10 @@ public class Helper implements IHttpBase {
 
     private static Helper instance;
 
-    private Helper(){}
+    private Helper() {
+    }
 
-    public static Helper obtain(){
+    public static Helper obtain() {
         synchronized (Helper.class) {
             if (instance == null) {
                 instance = new Helper();
@@ -27,17 +28,22 @@ public class Helper implements IHttpBase {
         return instance;
     }
 
-    public static void addHttp(IHttpBase ihttpBase){
+    public static void addHttp(IHttpBase ihttpBase) {
         mIhttpBase = ihttpBase;
     }
 
     @Override
-    public void post(String url, Map<String, Object> params, ICallback callback) {
-        mIhttpBase.post(url,params,callback);
+    public void post(String url, Map<String, Object> params, Object tag, ICallback callback) {
+        mIhttpBase.post(url, params, tag, callback);
     }
 
     @Override
-    public void get(String url, Map<String, Object> params, ICallback callback) {
-      mIhttpBase.get(url,params,callback);
+    public void get(String url, Map<String, Object> params, Object tag, ICallback callback) {
+        mIhttpBase.get(url, params, tag, callback);
+    }
+
+    @Override
+    public void cancel(Object tag) {
+        mIhttpBase.cancel(tag);
     }
 }

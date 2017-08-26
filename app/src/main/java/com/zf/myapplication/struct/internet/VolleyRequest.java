@@ -32,7 +32,7 @@ public class VolleyRequest implements IHttpBase {
     }
 
     @Override
-    public void post(String url, final Map<String, Object> params, final ICallback callback) {
+    public void post(String url, final Map<String, Object> params, Object tag, final ICallback callback) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>() {
@@ -69,11 +69,12 @@ public class VolleyRequest implements IHttpBase {
                 }
             }
         };
+        stringRequest.setTag(tag);
         Queue.add(stringRequest);
     }
 
     @Override
-    public void get(String url, Map<String, Object> params, final ICallback callback) {
+    public void get(String url, Map<String, Object> params, Object tag, final ICallback callback) {
         StringBuffer sb = new StringBuffer();
         sb.append(url);
         if (params != null) {
@@ -103,6 +104,12 @@ public class VolleyRequest implements IHttpBase {
                 });
             }
         });
+        stringRequest.setTag(tag);
         Queue.add(stringRequest);
+    }
+
+    @Override
+    public void cancel(Object tag) {
+
     }
 }

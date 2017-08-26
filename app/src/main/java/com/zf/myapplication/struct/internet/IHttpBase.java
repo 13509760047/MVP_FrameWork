@@ -14,16 +14,20 @@ public interface IHttpBase {
      *
      * @param url      请求地址
      * @param params   请求参数
+     * @param tag      标签
      * @param callback 回调
      */
-    public void post(String url, Map<String, Object> params, ICallback callback);
+    public void post(String url, Map<String, Object> params, Object tag, ICallback callback);
 
     /**
      * get请求
      *
      * @param url      请求地址
      * @param params   请求参数
+     * @param tag      标签
      * @param callback 回调
      */
-    public void get(String url, Map<String, Object> params, ICallback callback);
+    public void get(String url, Map<String, Object> params, Object tag, ICallback callback);
+
+    public void cancel(Object tag);
 }

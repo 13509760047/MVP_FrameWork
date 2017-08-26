@@ -7,6 +7,7 @@ import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Dispatcher;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,8 +30,9 @@ public class OkhttpRequest implements IHttpBase {
     }
 
     @Override
-    public void post(String url, Map<String, Object> params, final ICallback callback) {
+    public void post(String url, Map<String, Object> params, Object tag, final ICallback callback) {
         Request.Builder Request = new Request.Builder();
+        Request.tag(tag);
         Request.url(url);
         if (params != null) {
             FormBody.Builder body = new FormBody.Builder();
@@ -74,7 +76,7 @@ public class OkhttpRequest implements IHttpBase {
     }
 
     @Override
-    public void get(String url, Map<String, Object> params, final ICallback callback) {
+    public void get(String url, Map<String, Object> params, Object tag, final ICallback callback) {
         Request.Builder Request = new Request.Builder();
         StringBuffer sb = new StringBuffer();
         sb.append(url);
@@ -84,6 +86,7 @@ public class OkhttpRequest implements IHttpBase {
             }
         }
         Request.url(sb.toString());
+        Request.tag(tag);
         Request.header("User-Agent", "a");
         okHttpClient.newCall(Request.build()).enqueue(new Callback() {
             @Override
@@ -116,5 +119,22 @@ public class OkhttpRequest implements IHttpBase {
                 }
             }
         });
+    }
+
+    @Override
+    public void cancel(Object tag) {
+        Dispatcher dispatcher = okHttpClient.dispatcher();
+        synchronized (dispatcher){
+            for (Call call : dispatcher.queuedCalls()) {
+                if (tag.equals(call.request().tag())) {
+                    call.cancel();
+                }
+            }
+            for (Call call : dispatcher.runningCalls()) {
+                if (tag.equals(call.request().tag())) {
+                    call.cancel();
+                }
+            }
+        }
     }
 }
