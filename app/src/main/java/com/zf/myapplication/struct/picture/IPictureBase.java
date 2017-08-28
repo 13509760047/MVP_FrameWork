@@ -1,5 +1,6 @@
 package com.zf.myapplication.struct.picture;
 
+import android.content.Context;
 import android.widget.ImageView;
 
 /**
@@ -9,5 +10,5 @@ import android.widget.ImageView;
  */
 
 public interface IPictureBase {
-    public void loadImage(Object object, String url, ImageView view);
+    public <C extends Context> void loadImage(C c, String ImagePath, ImageView view);
 }
