@@ -1,6 +1,7 @@
 package com.zf.myapplication.struct.picture;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,9 +22,9 @@ public class PicassoImage implements IPictureBase {
         int width = para.width;
         int height = para.height;
         Log.d("PicassoImage", "loadImage: width = " + width + " --- height = " + height);
-        int maxwidth = width > height ? height : width;
         Picasso.with(c)
                 .load(ImagePath)
+                .config(Bitmap.Config.RGB_565)
                 .resize(width, height)
                 .centerCrop()
                 .into(view);

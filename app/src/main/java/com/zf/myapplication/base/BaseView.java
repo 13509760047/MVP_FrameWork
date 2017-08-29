@@ -9,6 +9,4 @@ public interface BaseView {
     public void showToast(String str);
 
     public void showDialog(String str);
-
-    public void shouLoad(String str);
 }

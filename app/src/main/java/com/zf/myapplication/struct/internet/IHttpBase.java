@@ -29,5 +29,9 @@ public interface IHttpBase {
      */
     public void get(String url, Map<String, Object> params, Object tag, ICallback callback);
 
+    /**
+     * 取消
+     * @param tag
+     */
     public void cancel(Object tag);
 }

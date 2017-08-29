@@ -7,11 +7,11 @@ import android.support.annotation.NonNull;
  * Created by zf on 2017/8/12 0025.
  */
 
-public abstract class BasePresenter<T> {
+public abstract class BasePresenter {
 
-    protected T IView;
+    protected  BaseView IView;
 
-    public void setIView(@NonNull T IView) {
+    public <T extends BaseView> void setIView(@NonNull T IView) {
         this.IView = IView;
     }
 

@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.zf.myapplication.struct.Helper;
 import com.zf.myapplication.struct.internet.OkhttpRequest;
-import com.zf.myapplication.struct.picture.PicassoImage;
+import com.zf.myapplication.struct.picture.GlideImage;
 
 /**
  * 2033152950
@@ -17,7 +17,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 //        Helper.addHttp(new OkhttpRequest());
-        Helper.addHttp(new OkhttpRequest()).addIImage(new PicassoImage());
+        Helper.addHttp(new OkhttpRequest());
+        Helper.addIImage(new GlideImage());
 //        ImageHelper.addIImage(new GlideImage());
 
     }

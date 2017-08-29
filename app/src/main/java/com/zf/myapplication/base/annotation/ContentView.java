@@ -1,4 +1,4 @@
-package com.zf.myapplication.base;
+package com.zf.myapplication.base.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,11 +8,10 @@ import java.lang.annotation.Target;
 /**
  * creater: zf
  * qq: 2033152950
- * time:2017/8/28 0028 下午 5:46
+ * time:2017/8/28 0028 下午 5:33
  */
-
-@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ViewInject {
-    int value() default -1;
+public @interface ContentView {
+    int value();
 }
