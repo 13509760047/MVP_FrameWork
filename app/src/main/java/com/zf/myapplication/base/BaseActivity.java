@@ -16,6 +16,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         super.onCreate(savedInstanceState);
         ViewUtil.injectContentView(this);
         ViewUtil.injectById(this);
+//        ViewUtil.injectEvents(this);
         presenter = initPrasenter();
         init();
     }

@@ -11,6 +11,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/releases"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -29,6 +34,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.1'
     testCompile 'junit:junit:4.12'
     compile 'io.github.openfeign:feign-gson:9.5.1'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'

@@ -25,13 +25,14 @@ public class MainActivity extends BaseActivity<MainPrasenter> {
 
     @Override
     protected void init() {
-
+        Helper.obtain().loadImage(this,
+                "http://image.uczzd.cn/17064951196925499644.gif?id=0&from=export", images);
     }
 
     @Click(R.id.btn)
     private void onclick(View view) {
         Helper.obtain().loadImage(this,
-                "http://image.uczzd.cn/11647118377183585510.jpg?id=0&from=export", images);
+                "http://image.uczzd.cn/17064951196925499644.gif?id=0&from=export", images);
     }
 
 }
