@@ -7,21 +7,22 @@ import java.lang.reflect.Type;
 
 
 /**
- *  2033152950
+ * 2033152950
  * Created by zf on 2017/8/25 0025.
  */
 
 public abstract class HttpCallback<Response> implements ICallback {
 
+
     @Override
-    public void onSuccess(String result) {
+    public <V extends Object> void onSuccess(V result) {
         Gson gson = new Gson();
         Class<?> clazz = resolveClass(this);
-        Response response = (Response) gson.fromJson(result, clazz);
-        onSuccess(response);
+        Response response = (Response) gson.fromJson((String) result, clazz);
+        onSucces(response);
     }
 
-    public abstract void onSuccess(Response response);
+    public abstract void onSucces(Response response);
 
     /**
      * 获取Resonse的Class

@@ -3,6 +3,7 @@ package com.zf.myapplication.struct.internet;
 import android.os.Handler;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import okhttp3.Call;
@@ -41,7 +42,7 @@ public class OkhttpRequest implements IHttpBase {
             }
             Request.post(body.build());
         }
-        Request.header("User-Agent", "a");
+        Request.header("User-Agent ", "a");
         okHttpClient.newCall(Request.build()).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
@@ -122,9 +123,58 @@ public class OkhttpRequest implements IHttpBase {
     }
 
     @Override
+    public void IamgeLoad(String url, Object tag, final ICallback callback) {
+        Request.Builder Request = new Request.Builder();
+        Request.tag(tag);
+        Request.url(url);
+        Request.header("User-Agent ", "a");
+        okHttpClient.newCall(Request.build()).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onFailure(e.toString());
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (response.isSuccessful()) {
+
+                    byte[] bytes = new byte[1024];
+                    InputStream is = null;
+                    is = response.body().byteStream();
+                    long length = response.body().contentLength();
+                    long sum = 0;
+                    int len = 0;
+                    while ((len = is.read(bytes)) != -1){
+
+                    }
+
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+//                                callback.onSuccess();
+                            }
+                        });
+                } else {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(response.message());
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    @Override
     public void cancel(Object tag) {
         Dispatcher dispatcher = okHttpClient.dispatcher();
-        synchronized (dispatcher){
+        synchronized (dispatcher) {
             for (Call call : dispatcher.queuedCalls()) {
                 if (tag.equals(call.request().tag())) {
                     call.cancel();

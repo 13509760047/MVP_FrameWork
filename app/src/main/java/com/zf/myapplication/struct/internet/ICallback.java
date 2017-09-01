@@ -8,12 +8,16 @@ package com.zf.myapplication.struct.internet;
 public interface ICallback {
     /**
      * 成功
+     *
      * @param result
      */
-    void onSuccess(String result);
+    <V extends Object> void onSuccess(V result);
+
+    void onLoad(int progress);
 
     /**
      * 失败
+     *
      * @param error
      */
     void onFailure(String error);

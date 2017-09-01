@@ -1,6 +1,7 @@
 package com.zf.myapplication.struct.internet;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 
 import com.android.volley.AuthFailureError;
@@ -8,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -106,6 +108,35 @@ public class VolleyRequest implements IHttpBase {
         });
         stringRequest.setTag(tag);
         Queue.add(stringRequest);
+    }
+
+    @Override
+    public void IamgeLoad(String url, Object tag, final ICallback callback) {
+        ImageRequest imageRequest = new ImageRequest(
+                url,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(final Bitmap response) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.onSuccess(response);
+                            }
+                        });
+                    }
+                }, 0, 0, Bitmap.Config.RGB_565, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(final VolleyError error) {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onFailure(error.toString());
+                    }
+                });
+            }
+        });
+        imageRequest.setTag(tag);
+        Queue.add(imageRequest);
     }
 
     @Override
