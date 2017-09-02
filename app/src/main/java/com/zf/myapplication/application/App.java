@@ -3,7 +3,6 @@ package com.zf.myapplication.application;
 import android.app.Application;
 import android.content.Context;
 
-import com.taobao.sophix.SophixManager;
 import com.zf.myapplication.struct.Helper;
 import com.zf.myapplication.struct.internet.OkhttpRequest;
 import com.zf.myapplication.struct.picture.GlideImage;
@@ -45,7 +44,7 @@ public class App extends Application {
         super.onCreate();
 
         // queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中
-        SophixManager.getInstance().queryAndLoadNewPatch();
+//        SophixManager.getInstance().queryAndLoadNewPatch();
 
         Helper.addHttp(new OkhttpRequest(new OkHttpClient.Builder().build()));
         Helper.addIImage(new GlideImage());
