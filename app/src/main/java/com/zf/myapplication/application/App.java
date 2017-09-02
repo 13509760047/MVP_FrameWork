@@ -8,6 +8,8 @@ import com.zf.myapplication.struct.Helper;
 import com.zf.myapplication.struct.internet.OkhttpRequest;
 import com.zf.myapplication.struct.picture.GlideImage;
 
+import okhttp3.OkHttpClient;
+
 /**
  * 2033152950
  * Created by zf on 2017/8/19 0019.
@@ -45,7 +47,7 @@ public class App extends Application {
         // queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中
         SophixManager.getInstance().queryAndLoadNewPatch();
 
-        Helper.addHttp(new OkhttpRequest());
+        Helper.addHttp(new OkhttpRequest(new OkHttpClient.Builder().build()));
         Helper.addIImage(new GlideImage());
     }
 }

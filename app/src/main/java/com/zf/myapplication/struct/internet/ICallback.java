@@ -13,6 +13,11 @@ public interface ICallback {
      */
     <V extends Object> void onSuccess(V result);
 
+    /**
+     * 进度
+     *
+     * @param progress
+     */
     void onLoad(int progress);
 
     /**

@@ -36,7 +36,7 @@ public interface IHttpBase {
      * @param tag
      * @param callback
      */
-    public void IamgeLoad(String url, Object tag, ICallback callback);
+    public void downLoad(String url, Object tag, ICallback callback);
 
     /**
      * 取消

@@ -53,6 +53,11 @@ public class Helper implements IHttpBase, IPictureBase {
     }
 
     @Override
+    public void downLoad(String url, Object tag, ICallback callback) {
+
+    }
+
+    @Override
     public void cancel(Object tag) {
         mIhttpBase.cancel(tag);
     }

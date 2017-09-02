@@ -25,8 +25,8 @@ public class OkhttpRequest implements IHttpBase {
 
     private Handler mHandler;
 
-    public OkhttpRequest() {
-        okHttpClient = new OkHttpClient();
+    public OkhttpRequest(OkHttpClient client) {
+        okHttpClient = client;
         mHandler = new Handler();
     }
 
@@ -123,7 +123,7 @@ public class OkhttpRequest implements IHttpBase {
     }
 
     @Override
-    public void IamgeLoad(String url, Object tag, final ICallback callback) {
+    public void downLoad(String url, Object tag, final ICallback callback) {
         Request.Builder Request = new Request.Builder();
         Request.tag(tag);
         Request.url(url);
@@ -149,16 +149,16 @@ public class OkhttpRequest implements IHttpBase {
                     long length = response.body().contentLength();
                     long sum = 0;
                     int len = 0;
-                    while ((len = is.read(bytes)) != -1){
+                    while ((len = is.read(bytes)) != -1) {
 
                     }
 
-                        mHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
 //                                callback.onSuccess();
-                            }
-                        });
+                        }
+                    });
                 } else {
                     mHandler.post(new Runnable() {
                         @Override

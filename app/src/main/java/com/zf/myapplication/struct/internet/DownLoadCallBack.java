@@ -6,7 +6,7 @@ package com.zf.myapplication.struct.internet;
  * time:2017/9/1 0001 下午 4:48
  */
 
-public abstract class ImageCallBack implements ICallback{
+public abstract class DownLoadCallBack implements ICallback{
 
     @Override
     public <V> void onSuccess(V result) {
