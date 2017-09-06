@@ -23,12 +23,8 @@ import java.io.File;
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity<MainPrasenter> {
 
-
-
-
     @ById(R.id.images)
     private ImageView images;
-
 
     @Override
     protected MainPrasenter initPrasenter() {
@@ -37,7 +33,6 @@ public class MainActivity extends BaseActivity<MainPrasenter> {
 
     @Override
     protected void init() {
-
         if (ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         } else {
